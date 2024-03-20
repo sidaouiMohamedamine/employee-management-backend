@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 
 @Entity
 @Data
@@ -23,5 +25,9 @@ public class Team {
 
     @Column(name = "Team_tasks")
     private String description;
+
+
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
+    private List<Employee> employeeList;
 
 }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -22,4 +23,10 @@ public class Contract {
     private Long id;
     private Date ContractStartDate;
     private Date ContractEndDate;
+
+    @OneToMany(mappedBy = "contract",cascade = CascadeType.ALL)
+    private List<Employee> employeeList;
+
+    @Enumerated(EnumType.STRING)
+    private Type type;
 }

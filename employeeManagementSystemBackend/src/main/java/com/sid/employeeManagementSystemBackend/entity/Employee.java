@@ -10,7 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "Employee_Table")
+@Table(name = "employee_table")
 public class Employee {
 
         @Id
@@ -25,6 +25,21 @@ public class Employee {
         private String phoneNumber;
         private String adress;
         private Double salary;
+
+        @ManyToOne
+        @JoinColumn(name = "team_id")
+        private Team team;
+
+        @ManyToOne
+        @JoinColumn(name= "department_id")
+        private Department department;
+
+        @ManyToOne
+        @JoinColumn(name = "contract_id")
+        private Contract contract;
+
+        @Enumerated(EnumType.STRING)
+        private Level level;
 
 
 

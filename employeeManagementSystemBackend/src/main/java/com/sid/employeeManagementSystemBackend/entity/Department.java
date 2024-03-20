@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,6 +22,8 @@ public class Department {
     private String name;
     private String description;
 
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+    private List<Employee> employeeList;
 
 
 
