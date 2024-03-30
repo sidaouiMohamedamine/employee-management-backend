@@ -1,6 +1,8 @@
 package com.sid.employeeManagementSystemBackend.service;
 
 import com.sid.employeeManagementSystemBackend.entity.Employee;
+import com.sid.employeeManagementSystemBackend.entity.Team;
+import com.sid.employeeManagementSystemBackend.exception.NotFoundException;
 import com.sid.employeeManagementSystemBackend.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,26 +18,59 @@ public class EmployeeServiceImpl implements IEmployeeService{
 
     @Override
     public Employee addEmployee(Employee employee) {
-        return null;
+        return employeeRepository.save(employee);
     }
 
     @Override
     public List<Employee> getAllEmployee() {
-        return null;
+
+        return employeeRepository.findAll();
     }
 
     @Override
     public Employee getEmployeeById(Long id) {
-        return null;
+        Employee employee = employeeRepository.findById(id)
+                .orElseThrow(()->new NotFoundException("Employee Not Found"));
+
+        return employee;
     }
 
     @Override
     public Employee updateEmployee(Long id, Employee employee) {
-        return null;
+
+        Employee existingEmployee = employeeRepository.findById(id)
+                .orElseThrow(()-> new NotFoundException("Team Not Found"));
+        if (existingEmployee != null) {
+
+            existingEmployee.setFirstname(employee.getFirstname());
+            existingEmployee.setLastname(employee.getLastname());
+            existingEmployee.setEmail(employee.getEmail());
+            existingEmployee.setBirthDate(employee.getBirthDate());
+            existingEmployee.setPhoneNumber(employee.getPhoneNumber());
+            existingEmployee.setAdress(employee.getAdress());
+            existingEmployee.setSalary(employee.getSalary());
+
+            existingEmployee.setTeam(employee.getTeam());
+            existingEmployee.setDepartment(employee.getDepartment());
+            existingEmployee.setContract(employee.getContract());
+            existingEmployee.setLevel(employee.getLevel());
+
+            return employeeRepository.save(existingEmployee);
+        } else {
+            return null;
+        }
     }
 
     @Override
     public String deleteEmployee(Long id) {
-        return null;
+        if (employeeRepository.existsById(id)) {
+            employeeRepository.deleteById(id);
+            return "Employee with Id " + id + " has been deleted successfully.";
+        } else {
+            return "Employee with Id " + id + " not found.";
+        }
     }
+
+
+
 }
