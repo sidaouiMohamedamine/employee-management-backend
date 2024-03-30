@@ -2,7 +2,6 @@ package com.sid.employeeManagementSystemBackend.controller;
 
 
 import com.sid.employeeManagementSystemBackend.entity.Team;
-import com.sid.employeeManagementSystemBackend.exception.NotFoundException;
 import com.sid.employeeManagementSystemBackend.service.TeamServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +10,7 @@ import java.util.List;
 
 @RequestMapping("api/team/")
 @RestController
-public class TeamController {
+public class TeamRestController {
 
     @Autowired
     private TeamServiceImpl teamService;
