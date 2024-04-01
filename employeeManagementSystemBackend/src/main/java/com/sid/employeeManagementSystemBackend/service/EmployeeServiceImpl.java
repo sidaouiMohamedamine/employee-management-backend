@@ -70,6 +70,9 @@ public class EmployeeServiceImpl implements IEmployeeService{
             return "Employee with Id " + id + " not found.";
         }
     }
+    public Integer getEmployeeNumber(){
+        return employeeRepository.getEmployeeNumber();
+    }
 
 
 

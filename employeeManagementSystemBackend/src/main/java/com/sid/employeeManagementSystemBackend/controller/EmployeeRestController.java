@@ -37,7 +37,10 @@ public class EmployeeRestController {
                 return employeeService.deleteEmployee(id);
         }
 
-
+        @GetMapping("getEmployeeNumber")
+        public Integer getEmployeeNumber(){
+                return employeeService.getEmployeeNumber();
+        }
 
 
 

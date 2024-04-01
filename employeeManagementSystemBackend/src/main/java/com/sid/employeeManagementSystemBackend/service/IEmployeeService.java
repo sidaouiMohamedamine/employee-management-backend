@@ -10,5 +10,6 @@ public interface IEmployeeService {
     public Employee getEmployeeById(Long id);
     public Employee updateEmployee(Long id, Employee employee);
     public String deleteEmployee(Long id);
+    public Integer getEmployeeNumber();
 
 }

@@ -19,4 +19,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
         List<Employee> findEmployeeBySalary(Double salary);
         boolean existsEmployeeByLastname(String lastName);
 
+        @Query("select count(e) from Employee e")
+        Integer getEmployeeNumber();
+
 }
