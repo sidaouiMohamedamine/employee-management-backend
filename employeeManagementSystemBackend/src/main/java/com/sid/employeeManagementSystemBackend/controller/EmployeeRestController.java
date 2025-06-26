@@ -4,6 +4,7 @@ package com.sid.employeeManagementSystemBackend.controller;
 import com.sid.employeeManagementSystemBackend.entity.Employee;
 import com.sid.employeeManagementSystemBackend.service.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class EmployeeRestController {
                 return  employeeService.updateEmployee(id,employee);
         }
         @DeleteMapping("deleteEmployee/{id}")
-        public String deleteEmployee(@PathVariable Long id){
+        public ResponseEntity<Void> deleteEmployee(@PathVariable Long id){
                 return employeeService.deleteEmployee(id);
         }
 

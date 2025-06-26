@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
-        @Query("select e from Employee e where e.adress=:adress")
-        List<Employee> getEmployeeByAdress(@Param("adress")String adress);
+        @Query("select e from Employee e where e.address=:address")
+        List<Employee> getEmployeeByAdress(@Param("address")String address);
 
         /************************deuxiéme méthode    ***************/
         List<Employee> findEmployeeBySalary(Double salary);
