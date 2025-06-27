@@ -5,6 +5,7 @@ import com.sid.employeeManagementSystemBackend.entity.Team;
 import com.sid.employeeManagementSystemBackend.exception.NotFoundException;
 import com.sid.employeeManagementSystemBackend.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -47,7 +48,7 @@ public class EmployeeServiceImpl implements IEmployeeService{
             existingEmployee.setEmail(employee.getEmail());
             existingEmployee.setBirthDate(employee.getBirthDate());
             existingEmployee.setPhoneNumber(employee.getPhoneNumber());
-            existingEmployee.setAdress(employee.getAdress());
+            existingEmployee.setAddress(employee.getAddress());
             existingEmployee.setSalary(employee.getSalary());
 
             existingEmployee.setTeam(employee.getTeam());
@@ -62,15 +63,14 @@ public class EmployeeServiceImpl implements IEmployeeService{
     }
 
     @Override
-    public String deleteEmployee(Long id) {
+    public ResponseEntity<Void> deleteEmployee(Long id) {
         if (employeeRepository.existsById(id)) {
             employeeRepository.deleteById(id);
-            return "Employee with Id " + id + " has been deleted successfully.";
+            return ResponseEntity.noContent().build();
         } else {
-            return "Employee with Id " + id + " not found.";
+            return ResponseEntity.notFound().build();
         }
-    }
-    public Integer getEmployeeNumber(){
+    }    public Integer getEmployeeNumber(){
         return employeeRepository.getEmployeeNumber();
     }
 

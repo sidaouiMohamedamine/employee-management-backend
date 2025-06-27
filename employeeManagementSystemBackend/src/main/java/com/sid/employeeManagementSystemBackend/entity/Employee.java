@@ -23,7 +23,7 @@ public class Employee {
         private String email;
         private Date birthDate;
         private String phoneNumber;
-        private String adress;
+        private String address;
         private Double salary;
 
         @ManyToOne
