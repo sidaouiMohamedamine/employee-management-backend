@@ -24,7 +24,7 @@ public class Contract {
     private Date ContractStartDate;
     private Date ContractEndDate;
 
-    @OneToMany(mappedBy = "contract",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "contract", cascade = CascadeType.ALL)
     private List<Employee> employeeList;
 
     @Enumerated(EnumType.STRING)
